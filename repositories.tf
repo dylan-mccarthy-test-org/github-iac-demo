@@ -21,6 +21,10 @@ resource "github_team_repository" "infrastructure" {
     team.team_name => {
         team_id = github_team.all[team.team_name].id
         permission = team.permission
-    } if lookup(github_team.all, team.tame_name, false) != false
+    } if lookup(github_team.all, team.team_name, false) != false
   }
+
+  team_id = each.value.team_id
+  repository = github_repository.infrastructure.id
+  permission = each.value.permission
 }
