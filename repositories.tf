@@ -53,8 +53,7 @@ resource "github_branch_protection_v3" "infrastructure" {
     }
     required_pull_request_reviews {
         dismiss_stale_reviews = true
-        restrict_dismissals = true
-        dismissal_restrictions = [
+        dismissal_teams = [
             "teamone"
         ]
     }
