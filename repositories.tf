@@ -52,11 +52,10 @@ resource "github_branch_protection" "infrastructure" {
         contexts = ["ci/circleci: build"]
     }
     required_pull_request_reviews {
-        dismissal_restrictions {
-            teams = ["teamone"]
-        }
         dismiss_stale_reviews = true
-        require_code_owner_reviews = true
-        required_approving_review_count = 1
+        restrict_dismissals = true
+        dismissal_restrictions = [
+            "teamone"
+        ]
     }
 }
