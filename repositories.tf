@@ -15,6 +15,7 @@ resource "github_repository" "infrastructure" {
     archived = false
 }
 
+
 resource "github_team_repository" "infrastructure" {
   for_each = {
     for team in local.repo_teams_files["infrastructure"]:
