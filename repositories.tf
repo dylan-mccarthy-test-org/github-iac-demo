@@ -15,25 +15,6 @@ resource "github_repository" "infrastructure" {
     archived = false
 }
 
-resource "github_repository" "infrastructure" {
-    name        = "sharedrepo"
-    description = "This is a repository for team two"
-    visibility  = "private"
-    has_issues  = true
-    has_projects = true
-    has_wiki = true
-    auto_init = true
-    allow_merge_commit = true
-    allow_rebase_merge = true
-    allow_squash_merge = true
-    delete_branch_on_merge = true
-    vulnerability_alerts = true
-    has_downloads = true
-    archived = false
-}
-  
-
-
 resource "github_team_repository" "infrastructure" {
   for_each = {
     for team in local.repo_teams_files["infrastructure"]:
