@@ -44,7 +44,7 @@ resource "github_team_repository" "infrastructure" {
 }
 
 resource "github_branch_protection" "infrastructure" {
-    repository_id = github_repository.infrastructure.name
+    repository_id = github_repository.infrastructure.id
     pattern = "main"
     enforce_admins = true
     required_status_checks {
