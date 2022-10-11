@@ -47,14 +47,8 @@ resource "github_branch_protection_v3" "infrastructure" {
     repository = github_repository.infrastructure.name
     branch = "main"
     enforce_admins = true
-    required_status_checks {
-        strict = true
-        contexts = ["ci/travis"]
-    }
     required_pull_request_reviews {
         dismiss_stale_reviews = true
-        dismissal_teams = [
-            "teamone"
-        ]
+        required_approving_review_count = 2
     }
 }
