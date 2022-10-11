@@ -1,3 +1,3 @@
-data "github_user" "current" {
-    username = var.username
+data "github_user" "self" {
+    username = ""
 }
