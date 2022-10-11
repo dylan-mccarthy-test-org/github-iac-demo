@@ -1,7 +1,7 @@
 resource "github_repository" "infrastructure" {
     name        = "teamonerepo"
     description = "This is a repository for team one"
-    visibility  = "private"
+    visibility  = "public"
     has_issues  = true
     has_projects = true
     has_wiki = true
