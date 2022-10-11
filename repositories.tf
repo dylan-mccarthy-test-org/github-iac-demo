@@ -42,3 +42,21 @@ resource "github_team_repository" "infrastructure" {
   repository = github_repository.infrastructure.id
   permission = each.value.permission
 }
+
+resource "github_branch_protection" "infrastructure" {
+    repository_id = github_repository.infrastructure.name
+    pattern = "main"
+    enforce_admins = true
+    required_status_checks {
+        strict = true
+        contexts = ["ci/circleci: build"]
+    }
+    required_pull_request_reviews {
+        dismissal_restrictions {
+            teams = ["teamone"]
+        }
+        dismiss_stale_reviews = true
+        require_code_owner_reviews = true
+        required_approving_review_count = 1
+    }
+}
