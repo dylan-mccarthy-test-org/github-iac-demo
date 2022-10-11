@@ -15,6 +15,20 @@ resource "github_repository" "infrastructure" {
     archived = false
 }
 
+resource "github_repository" "teamtworepo" {
+    name = "teamtworepo"
+    visibility = "private"
+    has_issues = true
+    has_projects = true
+    has_wiki = false
+    allow_merge_commit = true
+    allow_rebase_merge = true
+    allow_squash_merge = true
+    vulnerability_alerts = false
+    has_downloads = true
+    archived = false
+}
+
 resource "github_team_repository" "infrastructure" {
   for_each = {
     for team in local.repo_teams_files["infrastructure"]:
