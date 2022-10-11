@@ -43,13 +43,13 @@ resource "github_team_repository" "infrastructure" {
   permission = each.value.permission
 }
 
-resource "github_branch_protection" "infrastructure" {
-    repository_id = github_repository.infrastructure.node_id
-    pattern = "main"
+resource "github_branch_protection_v3" "infrastructure" {
+    repository_id = github_repository.infrastructure.name
+    branch = "main"
     enforce_admins = true
     required_status_checks {
         strict = true
-        contexts = ["ci/circleci: build"]
+        contexts = ["ci/travis"]
     }
     required_pull_request_reviews {
         dismiss_stale_reviews = true
